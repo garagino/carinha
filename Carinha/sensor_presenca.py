@@ -1,4 +1,4 @@
-#import RPi.GPIO as gpio# Comentado para não ficar acusando erro, só funciona na rasp
+#import RPi.GPIO as gpio # Comentado para não ficar acusando erro, só funciona na rasp
 import time
 
 pirSensor = 11
