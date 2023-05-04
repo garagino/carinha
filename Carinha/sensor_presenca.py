@@ -1,8 +1,8 @@
-#import RPi.GPIO as gpio # Comentado para não ficar acusando erro, só funciona na rasp
-import time
+import RPi.GPIO as gpio # Comentado para não ficar acusando erro, só funciona na rasp
 
-pirSensor = 11
-led = 7
+
+pirSensor = 40
+led = 10
 
 gpio.setmode(gpio.BOARD) # Setamos o modo da rasp para usarmos a numeração fisica
 
@@ -14,19 +14,18 @@ presence = 0 # Inicializa a variavel de presença. Quando for 0 -> nenhum movime
 # Um ciclo para verificar se houve movimento
 try:
     while True: # Inicia um loop infinito 
-        time.sleep(0.1) 
         presence = gpio.input(pirSensor) # atribui o valor do sensor pir à variavel presence. Quando for 0 -> nenhum movimento; Quando for 1 -> houve movimento
         
         if presence: # Se houve movimento...
-            print(f'Sensor PIR = {presence}')
             gpio.output(led, True) # Acende o led...
-            time.sleep(1) # Aguardo um segundo...
+            print('Ligado')
+        else:
             gpio.output(led, False) # E apaga
-            time.sleep(3) # Após 3 segundos o processo se reinicia
+            print('Desligado')
+            
 
-except KeyboardInterrupt: # Caso seja pressionado Ctrl + C para interromper o programa vai sair do loop infinito
-    pass
-finally: 
-    gpio.cleanup() # E vai executar o cleanup para limpar os pinos GPIO
+except: # Caso seja pressionado Ctrl + C para interromper o programa vai sair do loop infinito
+    gpio.cleaup()
+    print('Finalizando o C.A.R.I.N.H.A.')
 
 
