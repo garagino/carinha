@@ -2,6 +2,8 @@ import requests
 
 
 def API():
+    import json
+
     token = '5pU_kiVDbnaTRqp8feiC0GktoGJ5iOwV0-cPYZ-KZhs' #Define a chave de acesso da API
     coord = '-8.059641978650072,-34.87248963042983' #Define a coordenada que vamos usar
     unit = 'metric' # Define a unidade de medida dos dados. metric = celcius/km
@@ -21,7 +23,12 @@ def API():
     velocidade_vento = dados['results'][0]['wind']['speed']['value'] # A veliodcidade do vento em km/h
     dateTime = dados['results'][0]['dateTime']
 
-    return {'dateTime':dateTime, 'clima': clima, 'iconCode': iconCode, 'isDayTime': isDayTime, 'temperatura': temperatura, 'velocidade_vento': velocidade_vento} # Dicionario com todos os dados
+    arq = {'dateTime':dateTime, 'clima': clima, 'iconCode': iconCode, 'isDayTime': isDayTime, 'temperatura': temperatura, 'velocidade_vento': velocidade_vento} # Dicionario com todos os dados
+
+    json_object = json.dumps(arq, indent=4) # Função que transforma dicionario em arquivo json
+
+    with open('clima.json', 'w') as outfile: # Cria um arquivo do tipo Json e configura-o para o modo de escrita (w)
+        outfile.write(json_object) # Escreve o json dentro do arquivo
 
 def millis():
     from time import time

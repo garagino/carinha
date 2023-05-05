@@ -1,15 +1,14 @@
 from API_clima import *
 
 tempoAnterior = millis()
-dadosAPI = API()
+API() 
 
-print(dadosAPI)
+
 try:
     while True:
         if millis() - tempoAnterior >= 2760000: # 46 minutos
             tempoAnterior = millis()
-            dadosAPI = API()
-            print(dadosAPI)
+            API()
 
 except KeyboardInterrupt:
     print('C.A.R.I.N.H.A. finalizado')
