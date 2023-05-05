@@ -1,0 +1,8 @@
+{
+    "dateTime": "2023-05-04T21:20:00-03:00",
+    "clima": "Predominantemente nublado",
+    "iconCode": 38,
+    "isDayTime": false,
+    "temperatura": 26.0,
+    "velocidade_vento": 10.9
+}
