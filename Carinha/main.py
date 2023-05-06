@@ -1,4 +1,4 @@
-from API_clima import *
+from weather_api import *
 
 tempoAnterior = millis()
 API()
