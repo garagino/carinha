@@ -4,6 +4,8 @@ import requests
 
 
 def get_weather():
+    """Queries the weather API and saves relevant data to a JSON file"""
+
     token = '5pU_kiVDbnaTRqp8feiC0GktoGJ5iOwV0-cPYZ-KZhs' # Define a chave de acesso da API
     coord = '-8.059641978650072,-34.87248963042983' # Define a coordenada que vamos usar
     unit = 'metric'  # Define a unidade de medida dos dados. metric = celcius/km
@@ -54,4 +56,6 @@ def get_weather():
 
 
 def millis():
+    """Returns the current time in milliseconds"""
+
     return int(time() * 1000)
