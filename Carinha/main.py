@@ -1,12 +1,11 @@
 from API_clima import *
 
 tempoAnterior = millis()
-API() 
-
+API()
 
 try:
     while True:
-        if millis() - tempoAnterior >= 2760000: # 46 minutos
+        if millis() - tempoAnterior >= 2760000:  # 46 minutos
             tempoAnterior = millis()
             API()
 
@@ -15,10 +14,3 @@ except KeyboardInterrupt:
 
 finally:
     pass
-
-        
-
-
-
-
-
