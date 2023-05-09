@@ -14,13 +14,13 @@ def get_weather():
     language = 'pt-BR'  # idioma do clima predominante
 
     # Link de chamada da API
-    api = f'''https://atlas.microsoft.com/weather/currentConditions/json?api-version=1.1
-    &query={coord}
-    &unit={unit}
-    &details={details}
-    &duration={duration}
-    &language={language}
-    &subscription-key={token}'''
+    api = f'https://atlas.microsoft.com/weather/currentConditions/json?api-version=1.1'\
+        f'&query={coord}'\
+        f'&unit={unit}'\
+        f'&details={details}'\
+        f'&duration={duration}'\
+        f'&language={language}'\
+        f'&subscription-key={token}'
 
     # Usa a biblioteca 'requests' para pegar os dados da API e transforma num arquivo json
     dados = requests.get(url=api).json()
@@ -51,7 +51,7 @@ def get_weather():
     json_object = json.dumps(arq, indent=4)
 
     # Cria um arquivo do tipo Json e configura-o para o modo de escrita (w)
-    with open('weather_data.json', 'w') as outfile:
+    with open('Carinha/weather_data.json', 'w') as outfile:
         outfile.write(json_object)  # Escreve o json dentro do arquivo
 
 
