@@ -59,3 +59,12 @@ def millis():
     """Returns the current time in milliseconds"""
 
     return int(time() * 1000)
+
+def ler_json(arquivo):
+    import json
+    try:
+        with open (arquivo, 'r') as file:
+            dados = json.load(file)
+        return dados
+    except:
+        print('Ocorreu um erro ao abrir o arquivo')
