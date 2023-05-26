@@ -38,7 +38,7 @@ def get_weather():
     date_time = dados['results'][0]['dateTime']
 
     # Dicionario com todos os dados
-    arq = {
+    file = {
         'dateTime': date_time,
         'clima': weather,
         'iconCode': icon_code,
@@ -48,11 +48,9 @@ def get_weather():
         }
 
     # Função que transforma dicionario em arquivo json
-    json_object = json.dumps(arq, indent=4)
+    json_object = json.dumps(file, indent=4)
 
-    # Cria um arquivo do tipo Json e configura-o para o modo de escrita (w)
-    with open('Carinha/weather_data.json', 'w') as outfile:
-        outfile.write(json_object)  # Escreve o json dentro do arquivo
+    json_write(json_object)
 
 
 def millis():
@@ -60,11 +58,18 @@ def millis():
 
     return int(time() * 1000)
 
-def ler_json(arquivo):
-    import json
+def json_read(arquivo):
     try:
         with open (arquivo, 'r') as file:
             dados = json.load(file)
         return dados
     except:
-        print('Ocorreu um erro ao abrir o arquivo')
+        print('There was an error opening the file')
+
+def json_write(json_object):
+    try:
+        with open('Carinha/weather_data.json', 'w') as outfile:
+            outfile.write(json_object)
+    except:
+        print('An error occurred while creating the file')
+
