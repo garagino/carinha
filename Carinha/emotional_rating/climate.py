@@ -3,41 +3,47 @@
 import csv
 
 class Climate():
-    """The weather unit with its order identifier and description"""
+    """The weather unit contanier"""
 
-    def __init__(self, index, description, *icon_numbers):
-        self.index = index
-        self.description = description
-        self.icon_numbers = icon_numbers
+    class ClimateUnit():
+        """The weather unit with its order identifier and description"""
+        def __init__(self, index, description, *icon_numbers):
+            self.index = index
+            self.description = description
+            self.icon_numbers = icon_numbers
 
-    def __str__(self):
-        return f'{self.index}\t{self.icon_numbers}    \t{self.description}'
+        def __str__(self):
+            return f'{self.index}\t{self.icon_numbers}    \t{self.description}'
 
+    def __init__(self, lang='en'):
+        self.climates = self.__create_climates(lang)
 
-def create_climates(lang = 'en'):
-    climates = []
+    def __getitem__(self, key):
+        pass
 
-    with open(r'Carinha\emotional_rating\climate_map.csv', encoding='UTF-8') as climate_file:
-        climate_reader = csv.DictReader(climate_file)
+    def __create_climates(self, lang):
+        climate_units = []
 
-        i = 0
+        with open(r'Carinha\emotional_rating\climate_map.csv', encoding='UTF-8') as climate_file:
+            climate_reader = csv.DictReader(climate_file)
 
-        text_day = 'lang text day'.replace('lang', lang)
-        #text_night = 'lang text night'.replace('lang', lang)
+            index = 0
 
-        for climate_unity in climate_reader:
-            icons = [int(climate_unity['icon number day'])]
-            if climate_unity['icon number night'] != '':
-                icons.append(int(climate_unity['icon number night']))
+            text_day = 'lang text day'.replace('lang', lang)
+            #text_night = 'lang text night'.replace('lang', lang)
 
-            climate = Climate(i, climate_unity[text_day], *icons)
-            climates.append(climate)
-            i += 1
+            for climate_unity in climate_reader:
+                icons = [int(climate_unity['icon number day'])]
+                if climate_unity['icon number night'] != '':
+                    icons.append(int(climate_unity['icon number night']))
 
-    return climates
+                climate = self.ClimateUnit(index, climate_unity[text_day], *icons)
+                climate_units.append(climate)
+                index += 1
+
+        return climate_units
 
 if __name__ == "__main__":
-    #c = Climate(1, 'description', 1, 2, 3)
-    climates = create_climates('pt')
-    for c in climates:
-        print(c)
+    c = Climate('pt')
+    for i in c.climates:
+        print(i)
