@@ -10,6 +10,10 @@ class Climate():
         self.description = description
         self.icon_numbers = icon_numbers
 
+    def __str__(self):
+        return f'{self.index}\t{self.icon_numbers}    \t{self.description}'
+
+
 def create_climates(lang = 'en'):
     climates = []
 
@@ -34,7 +38,6 @@ def create_climates(lang = 'en'):
 
 if __name__ == "__main__":
     #c = Climate(1, 'description', 1, 2, 3)
-    print(locals())
     climates = create_climates('pt')
     for c in climates:
-        print(c.index,  c.icon_numbers, c.description)
+        print(c)
