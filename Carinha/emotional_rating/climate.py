@@ -23,6 +23,8 @@ class Climate():
             if key in climate.icon_numbers:
                 return climate
 
+        raise IndexError('climate index out of range')
+
     def __create_climates(self, lang):
         climate_units = []
 
