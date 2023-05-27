@@ -31,19 +31,16 @@ class Climate():
         with open(r'Carinha\emotional_rating\climate_map.csv', encoding='UTF-8') as climate_file:
             climate_reader = csv.DictReader(climate_file)
 
-            index = 0
-
             text_day = 'lang text day'.replace('lang', lang)
             #text_night = 'lang text night'.replace('lang', lang)
 
-            for climate_unity in climate_reader:
+            for index, climate_unity in enumerate(climate_reader):
                 icons = [int(climate_unity['icon number day'])]
                 if climate_unity['icon number night'] != '':
                     icons.append(int(climate_unity['icon number night']))
 
                 climate = self.ClimateUnit(index, climate_unity[text_day], *icons)
                 climate_units.append(climate)
-                index += 1
 
         return climate_units
 
