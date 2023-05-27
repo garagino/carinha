@@ -19,7 +19,9 @@ class Climate():
         self.climates = self.__create_climates(lang)
 
     def __getitem__(self, key):
-        pass
+        for climate in self.climates:
+            if key in climate.icon_numbers:
+                return climate
 
     def __create_climates(self, lang):
         climate_units = []
