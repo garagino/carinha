@@ -23,9 +23,9 @@ class Climate():
         self.climates = self.__create_climates(lang)
 
     def __getitem__(self, key):
-        for climate in self.climates:
-            if key in climate.icon_numbers:
-                return climate
+        for climate_unity in self.climates:
+            if key in climate_unity.icon_numbers:
+                return climate_unity
 
         raise IndexError('climate index out of range')
 
@@ -43,13 +43,10 @@ class Climate():
                 if climate_unity['icon number night'] != '':
                     icons.append(int(climate_unity['icon number night']))
 
-                climate = self.ClimateUnit(index, climate_unity[text_day], *icons)
-                climate_units.append(climate)
+                climate_unit = self.ClimateUnit(index, climate_unity[text_day], *icons)
+                climate_units.append(climate_unit)
 
         return climate_units
 
 
-if __name__ == "__main__":
-    c = Climate('pt')
-    for i in c.climates:
-        print(i)
+climate = Climate('pt')
