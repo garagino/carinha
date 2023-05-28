@@ -2,6 +2,7 @@
 
 import csv
 
+
 class Climate():
     """The weather unit contanier"""
 
@@ -46,6 +47,7 @@ class Climate():
                 climate_units.append(climate)
 
         return climate_units
+
 
 if __name__ == "__main__":
     c = Climate('pt')
