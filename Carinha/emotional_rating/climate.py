@@ -15,6 +15,9 @@ class Climate():
         def __str__(self):
             return f'{self.index}\t{self.icon_numbers}    \t{self.description}'
 
+        def __sub__(self, other):
+            return abs(self.index - other.index)
+
     def __init__(self, lang='en'):
         self.climates = self.__create_climates(lang)
 
