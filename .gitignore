@@ -161,4 +161,4 @@ cython_debug/
 
 
 #json
-*.json
+weather_data.json
