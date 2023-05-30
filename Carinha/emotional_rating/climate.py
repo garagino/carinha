@@ -20,16 +20,16 @@ class Weather():
             return abs(self.index - other.index)
 
     def __init__(self, lang='en'):
-        self.weather = self.__create_climates(lang)
+        self.weathers = self.__create_weathers(lang)
 
     def __getitem__(self, key):
-        for weather_unity in self.weather:
+        for weather_unity in self.weathers:
             if key in weather_unity.icon_numbers:
                 return weather_unity
 
         raise IndexError('climate index out of range')
 
-    def __create_climates(self, lang):
+    def __create_weathers(self, lang):
         weather_units = []
 
         with open(r'Carinha\emotional_rating\climate_map.csv', encoding='UTF-8') as climate_file:
@@ -50,6 +50,3 @@ class Weather():
 
 
 weather = Weather('pt')
-
-
-
