@@ -1,0 +1,29 @@
+icon number day,icon number night,day,night,en text day,en text night,pt text day,pt text night
+1,33,Yes,No,Sunny,Clear,Ensolarado,Limpar
+2,34,Yes,No,Mostly Sunny,Mostly Clear,Sol e poucas nuvens,Predominantemente aberto
+3,35,Yes,No,Partly Sunny,Partly Cloudy,Parcialmente ensolarado,Períodos de céu nublado
+4,36,Yes,No,Intermittent Clouds,Intermittent Clouds,Variação de nuvens,Variação de nuvens
+5,37,Yes,No,Hazy Sunshine,Hazy Moonlight,Sol entre nuvens,Luar enevoado
+6,38,Yes,No,Mostly Cloudy,Mostly Cloudy,Parcialmente nublado,Parcialmente nublado
+7,,Yes,Yes,Cloudy,,Nublado,
+8,,Yes,Yes,Dreary (Overcast),,Encoberto,
+11,,Yes,Yes,Fog,,Nevoeiro,
+12,,Yes,Yes,Showers,,Pancadas de chuva,
+21,44,Yes,No,Partly Sunny with Flurries,Mostly Cloudy with Snow,Parcialmente ensolarado com chuva rápida,Parcialmente nublado com neve
+20,43,Yes,No,Mostly Cloudy with Flurries,Mostly Cloudy with Flurries,Parcialmente nublado com chuva rápida,Parcialmente nublado com chuva rápida
+19,,Yes,Yes,Flurries,,Chuva rápida,
+18,,Yes,Yes,Rain,,Chuva,
+16,42,Yes,No,Mostly Cloudy with Thunderstorms,Mostly Cloudy with Thunderstorms,Parcialmente nublado com trovoadas,Parcialmente nublado com trovoadas
+17,41,Yes,No,Partly Sunny with Thunderstorms,Partly Cloudy with Thunderstorms,Parcialmente ensolarado com trovoadas,Períodos de céu nublado com trovoadas
+13,40,Yes,No,Mostly Cloudy with Showers,Mostly Cloudy with Showers,Parcialmente nublado com pancadas de chuva,Parcialmente nublado com pancadas de chuva
+14,39,Yes,No,Partly Sunny with Showers,Partly Cloudy with Showers,Parcialmente ensolarado com pancadas de chuva,Períodos de céu nublado com pancadas de chuva
+15,,Yes,Yes,Thunderstorms,,Trovoadas,
+22,,Yes,Yes,Snow,,Neve,
+23,,Yes,No,Mostly Cloudy with Snow,,Parcialmente nublado com neve,
+24,,Yes,Yes,Ice,,Gelo,
+25,,Yes,Yes,Sleet,,Chuva congelada,
+26,,Yes,Yes,Freezing Rain,,Chuva congelante,
+29,,Yes,Yes,Rain and Snow,,Chuva e neve,
+30,,Yes,Yes,Hot,,Frequente,
+31,,Yes,Yes,Cold,,Frio,
+32,,Yes,Yes,Windy,,Ventania,
