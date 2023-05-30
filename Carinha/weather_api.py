@@ -40,11 +40,11 @@ def get_weather():
     # Dicionario com todos os dados
     file = {
         'dateTime': date_time,
-        'clima': weather,
+        'weather': weather,
         'iconCode': icon_code,
         'isDayTime': is_day_time,
-        'temperatura': temp,
-        'velocidade_vento': wind_speed
+        'temperature': temp,
+        'windSpeed': wind_speed
         }
 
     # Função que transforma dicionario em arquivo json
