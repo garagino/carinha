@@ -54,7 +54,7 @@ class Emotions():
 
     def get_current_data(self):
         """Return a current emotion from a JSON file"""
-        weather_data = weather_api.json_read('Carinha/emotional_rating/current_data.json')
+        weather_data = json_read('Carinha/emotional_rating/current_data.json')
 
         weather_unit = weather_data['iconCode']
         temperature = weather_data['temperature']
