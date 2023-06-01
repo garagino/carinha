@@ -1,7 +1,10 @@
+import sys
+sys.path.append('../Carinha')
+
 import json
-from utils import *
 from datetime import date
 import requests
+from Carinha.utils import json_write
 
 
 class WeatherApi():

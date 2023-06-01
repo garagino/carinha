@@ -1,10 +1,12 @@
 """Representation of an emotion"""
 
+import sys
+sys.path.append('../Carinha')
 
 from os import listdir
 from weather import weather
 from weather_api import weather_api
-from utils import *
+from Carinha.utils import json_read
 
 
 class Emotions():

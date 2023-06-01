@@ -1,5 +1,5 @@
 from emotional_rating.weather_api import weather_api
-from utils import *
+from utils import millis
 
 tempoAnterior = millis()
 weather_api.get_weather()
