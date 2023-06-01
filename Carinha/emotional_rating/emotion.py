@@ -14,6 +14,7 @@ class Emotions():
         def __init__(self, weather_unit, temperature):
             self.weather_unit = weather_unit
             self.temperature = temperature
+            # dia da semana
 
         def __str__(self):
             return f'{self.weather_unit}\t{self.temperature}'
@@ -38,20 +39,8 @@ class Emotions():
 
             return score
 
-        '''def read_from_file(self):
-            """Return a emotion from a JSON file"""
-            weather_data = json_read('Carinha/weather_data.json')
-
-            weather_unit = weather_data['iconCode']
-            temperature = weather_data['temperature']
-
-            return Emotion(weather[weather_unit], temperature)'''
-
     def __init__(self):
-        print(self.__generate_emotions())
-
-    def pega(self):
-        return self.__generate_emotions()
+        self.emotions = self.__generate_emotions()
 
     def __generate_emotions(self):
         emotions = []
@@ -61,18 +50,23 @@ class Emotions():
             emotions.append(self.Emotion(dict_file['iconCode'], dict_file['temperature']))
 
         return emotions
-            
 
-e = Emotions()
-for em in e.pega():
-    print(em)
+    def get_current_data(self):
+        """Return a current emotion from a JSON file"""
+        weather_data = weather_api.json_read('Carinha/emotional_rating/current_data.json')
 
-'''alegria = Emotion(weather[1], 28.5)
-tristeza = Emotion(weather[18], 20.0)
+        weather_unit = weather_data['iconCode']
+        temperature = weather_data['temperature']
+        #week day
 
-atual = Emotion(weather[1], 0.0)
-atual = atual.read_from_file()
+        return self.Emotion(weather[weather_unit], temperature)
 
-print(atual.compare(alegria))
-print(atual.compare(tristeza))
-'''
+
+emotions = Emotions()
+
+for emotion in emotions.emotions:
+    print(emotion)
+
+current = e.get_current_data()
+
+print(current)
