@@ -1,5 +1,5 @@
 import json
-from time import time
+from utils import *
 from datetime import date
 import requests
 
@@ -40,8 +40,6 @@ class WeatherApi():
         wind_speed = dados['results'][0]['wind']['speed']['value']
         date_time = dados['results'][0]['dateTime']
 
-
-
         week_day = ['Monday',
                     'Tuesday',
                     'Wednesday',
@@ -64,26 +62,6 @@ class WeatherApi():
         # Função que transforma dicionario em arquivo json
         json_object = json.dumps(file, indent=4)
 
-        self.json_write(json_object)
-
-    def millis(self):
-        """Returns the current time in milliseconds"""
-
-        return int(time() * 1000)
-
-    def json_read(self, arquivo):
-        try:
-            with open (arquivo, 'r') as file:
-                dados = json.load(file)
-            return dados
-        except:
-            print('There was an error opening the file')
-
-    def json_write(self, json_object):
-        try:
-            with open('Carinha/emotional_rating/current_data.json', 'w') as outfile:
-                outfile.write(json_object)
-        except:
-            print('An error occurred while creating the file')
+        json_write(json_object)
 
 weather_api = WeatherApi()

@@ -4,6 +4,7 @@
 from os import listdir
 from weather import weather
 from weather_api import weather_api
+from utils import *
 
 
 class Emotions():
@@ -57,7 +58,7 @@ class Emotions():
         emotions = []
         path_emotions = r'Carinha\emotional_rating\emotions'
         for file_emotion in listdir(path_emotions):
-            dict_file = weather_api.json_read(f'{path_emotions}\\{file_emotion}')
+            dict_file = json_read(f'{path_emotions}\\{file_emotion}')
             emotions.append(self.Emotion(dict_file['iconCode'], dict_file['temperature']))
 
         return emotions

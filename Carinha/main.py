@@ -1,12 +1,13 @@
 from emotional_rating.weather_api import weather_api
+from utils import *
 
-tempoAnterior = weather_api.millis()
+tempoAnterior = millis()
 weather_api.get_weather()
 
 try:
     while True:
-        if weather_api.millis() - tempoAnterior >= 2760000:  # 46 minutos
-            tempoAnterior = weather_api.millis()
+        if millis() - tempoAnterior >= 2760000:  # 46 minutos
+            tempoAnterior = millis()
             weather_api.get_weather()
 
 except KeyboardInterrupt:
