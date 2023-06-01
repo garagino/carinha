@@ -67,6 +67,6 @@ emotions = Emotions()
 for emotion in emotions.emotions:
     print(emotion)
 
-current = e.get_current_data()
+current = emotions.get_current_data()
 
 print(current)
