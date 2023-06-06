@@ -2,7 +2,7 @@
 
 from os import listdir
 from weather import weather
-from Carinha.utils import json_read
+from utils import json_read, week_day_list as wdl
 
 
 class Emotions():
@@ -35,6 +35,11 @@ class Emotions():
 
             score += self.weather_unit - other.weather_unit
             score += abs(self.temperature - other.temperature)
+
+            week_day_dist_a = abs(wdl.index(self.week_day) - wdl.index(other.week_day))
+            week_day_dist_b = abs((len(wdl) - wdl.index(self.week_day)) - wdl.index(other.week_day))
+
+            score += min(week_day_dist_a, week_day_dist_b)
 
             return score
 
@@ -70,5 +75,4 @@ emotions = Emotions()
 current = emotions.get_current_data()
 
 for emotion in emotions.emotions:
-    #print(type(emotion))
     print(current.compare(emotion))
