@@ -1,11 +1,7 @@
 """Representation of an emotion"""
 
-import sys
-sys.path.append('../Carinha')
-
 from os import listdir
 from weather import weather
-from weather_api import weather_api
 from Carinha.utils import json_read
 
 
@@ -46,13 +42,14 @@ class Emotions():
         self.emotions = self.__generate_emotions()
 
     def __generate_emotions(self):
-        emotions = []
-        path_emotions = r'Carinha\emotional_rating\emotions'
+        emotions_list = []
+        path_emotions = 'Carinha/emotional_rating/emotions'
         for file_emotion in listdir(path_emotions):
-            dict_file = json_read(f'{path_emotions}\\{file_emotion}')
-            emotions.append(self.Emotion(dict_file['iconCode'], dict_file['temperature']))
+            dict_file = json_read(f'{path_emotions}/{file_emotion}')
+            weather_unit = weather[dict_file['iconCode']]
+            emotions_list.append(self.Emotion(weather_unit, dict_file['temperature']))
 
-        return emotions
+        return emotions_list
 
     def get_current_data(self):
         """Return a current emotion from a JSON file"""
@@ -66,10 +63,8 @@ class Emotions():
 
 
 emotions = Emotions()
-
-for emotion in emotions.emotions:
-    print(emotion)
-
 current = emotions.get_current_data()
 
-print(current)
+for emotion in emotions.emotions:
+    #print(type(emotion))
+    print(current.compare(emotion))
