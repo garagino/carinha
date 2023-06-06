@@ -1,6 +1,3 @@
-import sys
-sys.path.append('../Carinha')
-
 import json
 from datetime import date
 import requests
