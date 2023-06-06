@@ -1,7 +1,8 @@
 import json
 from datetime import date
 import requests
-from Carinha.utils import json_write
+from utils import json_write
+from utils import week_day_list
 
 
 class WeatherApi():
@@ -40,18 +41,10 @@ class WeatherApi():
         wind_speed = dados['results'][0]['wind']['speed']['value']
         date_time = dados['results'][0]['dateTime']
 
-        week_day = ['Monday',
-                    'Tuesday',
-                    'Wednesday',
-                    'Thursday',
-                    'Friday',
-                    'Saturday',
-                    'Sunday']
-
         # Dicionario com todos os dados
         file = {
             'dateTime': date_time,
-            'weekDay': week_day[date.weekday(date.today())],
+            'weekDay': week_day_list[date.weekday(date.today())],
             'weather': weather,
             'iconCode': icon_code,
             'isDayTime': is_day_time,
