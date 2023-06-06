@@ -10,10 +10,10 @@ class Emotions():
     class Emotion():
         """Emotion represented by a set of weather characteristics."""
 
-        def __init__(self, weather_unit, temperature):
+        def __init__(self, weather_unit, temperature, week_day):
             self.weather_unit = weather_unit
             self.temperature = temperature
-            # dia da semana
+            self.week_day = week_day
 
         def __str__(self):
             return f'{self.weather_unit}\t{self.temperature}'
@@ -46,8 +46,12 @@ class Emotions():
         path_emotions = 'Carinha/emotional_rating/emotions'
         for file_emotion in listdir(path_emotions):
             dict_file = json_read(f'{path_emotions}/{file_emotion}')
+
             weather_unit = weather[dict_file['iconCode']]
-            emotions_list.append(self.Emotion(weather_unit, dict_file['temperature']))
+            temperature = dict_file['temperature']
+            week_day = dict_file['weekDay']
+
+            emotions_list.append(self.Emotion(weather_unit, temperature, week_day))
 
         return emotions_list
 
@@ -55,11 +59,11 @@ class Emotions():
         """Return a current emotion from a JSON file"""
         weather_data = json_read('Carinha/emotional_rating/current_data.json')
 
-        weather_unit = weather_data['iconCode']
+        weather_unit = weather[weather_data['iconCode']]
         temperature = weather_data['temperature']
-        #week day
+        week_day = weather_data['weekDay']
 
-        return self.Emotion(weather[weather_unit], temperature)
+        return self.Emotion(weather_unit, temperature, week_day)
 
 
 emotions = Emotions()
