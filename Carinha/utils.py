@@ -20,3 +20,11 @@ def json_write(json_object):
             outfile.write(json_object)
     except:
         print('An error occurred while creating the file')
+
+week_day_list = ['Monday',
+                 'Tuesday',
+                 'Wednesday',
+                 'Thursday',
+                 'Friday',
+                 'Saturday',
+                 'Sunday']
