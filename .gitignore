@@ -160,5 +160,8 @@ cython_debug/
 #.idea/
 
 
-#json
-*.json
+# json
+current_data.json
+
+# vscode
+.vscode
