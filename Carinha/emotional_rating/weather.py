@@ -14,7 +14,7 @@ class Weather():
             self.icon_numbers = icon_numbers
 
         def __str__(self):
-            return f'{self.index}\t{self.icon_numbers}    \t{self.description}'
+            return f'{self.index} {self.icon_numbers} {self.description}'
 
         def __sub__(self, other):
             return abs(self.index - other.index)
