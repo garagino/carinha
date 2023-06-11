@@ -70,8 +70,9 @@ class Emotions():
 
         return emotions_list
 
-    def get_current_data(self):
-        """Return a current emotion from a JSON file"""
+    def __get_current_data(self):
+        """Return a current emotion data from a JSON weather file"""
+
         weather_data = json_read('Carinha/emotional_rating/current_data.json')
 
         weather_unit = weather[weather_data['iconCode']]
@@ -90,7 +91,8 @@ class Emotions():
         Emotion
             Returns closest emotion.
         """
-        current_data = self.get_current_data()
+
+        current_data = self.__get_current_data()
         emotions_score = {}
 
         for emotion in self.emotions:
