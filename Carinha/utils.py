@@ -1,5 +1,6 @@
 """Utility Functions"""
 
+import sys
 import json
 from time import time
 
@@ -8,15 +9,16 @@ def millis():
 
     return int(time() * 1000)
 
-def json_read(arquivo):
+def json_read(file_path):
     """Returns a dictionary from a read json file."""
 
     try:
-        with open (arquivo, 'r', encoding='UTF-8') as file:
-            dados = json.load(file)
-        return dados
-    except:
-        print('There was an error opening the file')
+        file = open(file_path, 'r', encoding='UTF-8')
+    except OSError:
+        print(f'Could not read file: "{file_path}"')
+        sys.exit()
+    with file:
+        return json.load(file)
 
 def json_write(json_object):
     """Writes a json object into a file."""
