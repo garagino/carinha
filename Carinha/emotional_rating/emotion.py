@@ -10,13 +10,14 @@ class Emotions():
     class Emotion():
         """Emotion represented by a set of weather characteristics."""
 
-        def __init__(self, weather_unit, temperature, week_day):
+        def __init__(self, name, weather_unit, temperature, week_day):
+            self.name = name
             self.weather_unit = weather_unit
             self.temperature = temperature
             self.week_day = week_day
 
         def __str__(self):
-            return f'{self.weather_unit}\t{self.temperature}'
+            return f'{self.name} [{self.weather_unit} {self.temperature}]'
 
         def compare(self, other):
             """Returns a score, which is the sum of the differences between emotions.
@@ -52,11 +53,12 @@ class Emotions():
         for file_emotion in listdir(path_emotions):
             dict_file = json_read(f'{path_emotions}/{file_emotion}')
 
+            name = dict_file['name']
             weather_unit = weather[dict_file['iconCode']]
             temperature = dict_file['temperature']
             week_day = dict_file['weekDay']
 
-            emotions_list.append(self.Emotion(weather_unit, temperature, week_day))
+            emotions_list.append(self.Emotion(name, weather_unit, temperature, week_day))
 
         return emotions_list
 
@@ -68,11 +70,11 @@ class Emotions():
         temperature = weather_data['temperature']
         week_day = weather_data['weekDay']
 
-        return self.Emotion(weather_unit, temperature, week_day)
+        return self.Emotion('current', weather_unit, temperature, week_day)
 
 
 emotions = Emotions()
 current = emotions.get_current_data()
 
 for emotion in emotions.emotions:
-    print(current.compare(emotion))
+    print(emotion, current.compare(emotion), sep=' -> ')
