@@ -72,9 +72,26 @@ class Emotions():
 
         return self.Emotion('current', weather_unit, temperature, week_day)
 
+    def get_current_emotion(self):
+        """Returns the current emotion
+
+        Compares current weather data with each predefined emotion
+
+        Returns
+        -------
+        Emotion
+            Returns closest emotion.
+        """
+        current_data = self.get_current_data()
+        emotions_score = {}
+
+        for emotion in self.emotions:
+            emotions_score[emotion] = current_data.compare(emotion)
+
+        return min(emotions_score, key=emotions_score.get)
+
 
 emotions = Emotions()
-current = emotions.get_current_data()
 
-for emotion in emotions.emotions:
-    print(emotion, current.compare(emotion), sep=' -> ')
+current_emotion = emotions.get_current_emotion()
+print(current_emotion)
