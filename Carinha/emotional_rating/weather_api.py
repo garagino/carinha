@@ -1,4 +1,3 @@
-import json
 from datetime import date
 import requests
 from utils import json_write
@@ -53,8 +52,6 @@ class WeatherApi():
         }
 
         # Função que transforma dicionario em arquivo json
-        json_object = json.dumps(file, indent=4)
-
-        json_write(json_object)
+        json_write('Carinha/emotional_rating/current_data.json', file)
 
 weather_api = WeatherApi()

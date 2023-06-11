@@ -20,14 +20,20 @@ def json_read(file_path):
     with file:
         return json.load(file)
 
-def json_write(json_object):
+def json_write(file_path, content):
     """Writes a json object into a file."""
 
     try:
-        with open('Carinha/emotional_rating/current_data.json', 'w', encoding='UTF-8') as outfile:
-            outfile.write(json_object)
-    except:
-        print('An error occurred while creating the file')
+        json_object = json.dumps(content, indent=4)
+        outfile = open(file_path, 'w', encoding='UTF-8')
+    except TypeError:
+        print(f'Could not serialize content: {content}')
+        sys.exit()
+    except OSError:
+        print(f'Could not write file: {file_path}')
+        sys.exit()
+    with outfile:
+        outfile.write(json_object)
 
 week_day_list = ['Monday',
                  'Tuesday',
