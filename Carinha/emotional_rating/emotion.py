@@ -6,6 +6,11 @@ from utils import json_read, week_day_list as wdl
 
 
 class Emotions():
+    """List of Emotions
+
+    Instantiate a list of emotions from reference files.
+    Generates a reference to current emotions and defines which emotion is being felt now.
+    """
 
     class Emotion():
         """Emotion represented by a set of weather characteristics."""
