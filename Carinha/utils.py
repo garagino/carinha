@@ -12,7 +12,7 @@ def json_read(arquivo):
     """Returns a dictionary from a read json file."""
 
     try:
-        with open (arquivo, 'r') as file:
+        with open (arquivo, 'r', encoding='UTF-8') as file:
             dados = json.load(file)
         return dados
     except:
@@ -22,7 +22,7 @@ def json_write(json_object):
     """Writes a json object into a file."""
 
     try:
-        with open('Carinha/emotional_rating/current_data.json', 'w') as outfile:
+        with open('Carinha/emotional_rating/current_data.json', 'w', encoding='UTF-8') as outfile:
             outfile.write(json_object)
     except:
         print('An error occurred while creating the file')
