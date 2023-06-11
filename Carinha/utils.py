@@ -1,3 +1,5 @@
+"""Utility Functions"""
+
 import json
 from time import time
 
@@ -7,6 +9,8 @@ def millis():
     return int(time() * 1000)
 
 def json_read(arquivo):
+    """Returns a dictionary from a read json file."""
+
     try:
         with open (arquivo, 'r') as file:
             dados = json.load(file)
@@ -15,6 +19,8 @@ def json_read(arquivo):
         print('There was an error opening the file')
 
 def json_write(json_object):
+    """Writes a json object into a file."""
+
     try:
         with open('Carinha/emotional_rating/current_data.json', 'w') as outfile:
             outfile.write(json_object)
