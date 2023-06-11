@@ -37,6 +37,7 @@ class Emotions():
             int
                 The lower the returned value, the more similar the emotions are.
             """
+
             score = 0
 
             score += self.weather_unit - other.weather_unit
@@ -53,6 +54,8 @@ class Emotions():
         self.emotions = self.__generate_emotions()
 
     def __generate_emotions(self):
+        """Generates a list of emotions from reference files"""
+
         emotions_list = []
         path_emotions = 'Carinha/emotional_rating/emotions'
         for file_emotion in listdir(path_emotions):
