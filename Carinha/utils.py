@@ -4,6 +4,15 @@ import sys
 import json
 from time import time
 
+
+week_day_list = ['Monday',
+                 'Tuesday',
+                 'Wednesday',
+                 'Thursday',
+                 'Friday',
+                 'Saturday',
+                 'Sunday']
+
 def millis():
     """Returns the current time in milliseconds"""
 
@@ -34,11 +43,3 @@ def json_write(file_path, content):
         sys.exit()
     with outfile:
         outfile.write(json_object)
-
-week_day_list = ['Monday',
-                 'Tuesday',
-                 'Wednesday',
-                 'Thursday',
-                 'Friday',
-                 'Saturday',
-                 'Sunday']

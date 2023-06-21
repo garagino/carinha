@@ -102,6 +102,3 @@ class Emotions():
 
 
 emotions = Emotions()
-
-current_emotion = emotions.get_current_emotion()
-print(current_emotion)

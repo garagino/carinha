@@ -1,6 +1,6 @@
 from emotional_rating.weather_api import weather_api
-from utils import millis
 from emotional_rating.emotion import emotions
+from utils import millis
 
 tempoAnterior = millis()
 weather_api.get_weather()
@@ -11,7 +11,7 @@ try:
             tempoAnterior = millis()
             weather_api.get_weather()
             current_emotion = emotions.get_current_emotion()
-            print(current_emotion)      
+            print(current_emotion)
 
 
 except KeyboardInterrupt:
