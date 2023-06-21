@@ -1,7 +1,7 @@
 """Representation of an emotion"""
 
 from os import listdir
-from weather import weather
+from emotional_rating.weather import weather
 from utils import json_read, week_day_list as wdl
 
 
