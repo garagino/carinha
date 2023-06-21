@@ -1,11 +1,9 @@
 from emotional_rating.weather_api import weather_api
 from utils import millis
-from emotional_rating.emotion import Emotions
+from emotional_rating.emotion import emotions
 
 tempoAnterior = millis()
 weather_api.get_weather()
-
-emotions = Emotions
 
 try:
     while True:
