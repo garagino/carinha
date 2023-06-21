@@ -16,8 +16,7 @@ class WeatherApi():
         duration = 0 #0 = current, 6 = last 6h, 24 = last 24h
         language = 'pt-BR'
 
-        #Link de chamada da API
-        api = f'https://atlas.microsoft.com/weather/currentConditions/json?api-version=1.1'\
+        url_api = f'https://atlas.microsoft.com/weather/currentConditions/json?api-version=1.1'\
             f'&query={coord}'\
             f'&unit={unit}'\
             f'&details={details}'\
@@ -25,21 +24,18 @@ class WeatherApi():
             f'&language={language}'\
             f'&subscription-key={token}'
 
-        # Usa a biblioteca 'requests' para pegar os dados da API e transforma num arquivo json
-        dados = requests.get(url=api, timeout=30).json()['results'][0]
+        response = requests.get(url=url_api, timeout=30).json()['results'][0]
 
-        # Dicionario com todos os dados
-        file = {
-            'dateTime': dados['dateTime'],
+        file_content = {
+            'dateTime': response['dateTime'],
             'weekDay': week_day_list[date.weekday(date.today())],
-            'weather': dados['phrase'],
-            'iconCode': dados['iconCode'],
-            'isDayTime': dados['isDayTime'],
-            'temperature': dados['temperature']['value'],
-            'windSpeed': dados['wind']['speed']['value']
+            'weather': response['phrase'],
+            'iconCode': response['iconCode'],
+            'isDayTime': response['isDayTime'],
+            'temperature': response['temperature']['value'],
+            'windSpeed': response['wind']['speed']['value']
         }
 
-        # Função que transforma dicionario em arquivo json
-        json_write('Carinha/emotional_rating/current_data.json', file)
+        json_write('Carinha/emotional_rating/current_data.json', file_content)
 
 weather_api = WeatherApi()
