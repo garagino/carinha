@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 from time import sleep
 
 
-class Respirar(Thread):
+class Breathing(Thread):
     def __init__(self, frequency):
         Thread.__init__(self)
         self.frenquency = frequency
@@ -28,7 +28,7 @@ class Respirar(Thread):
         self.breathe()
 
 
-breathe = Respirar(0.5)
+breathe = Breathing(0.5)
 
 while True:
     breathe.run()
