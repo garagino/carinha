@@ -4,10 +4,10 @@ import RPi.GPIO as GPIO
 
 
 class Breathing(Thread):
-    def __init__(self, frequency):
+    def __init__(self, led_pin, frequency):
         Thread.__init__(self)
         self.frenquency = frequency
-        self.led_pin = 0
+        self.led_pin = led_pin
 
         GPIO.setup(self.led_pin, GPIO.OUT)
         self.pwm = GPIO.PWM(self.led_pin, 100)
@@ -26,7 +26,7 @@ class Breathing(Thread):
         self.breathe()
 
 
-breathe = Breathing(0.5)
+breathe = Breathing(0, 0.5)
 
 while True:
     breathe.run()
