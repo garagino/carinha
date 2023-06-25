@@ -7,11 +7,10 @@ class Breathing(Thread):
     def __init__(self, frequency):
         Thread.__init__(self)
         self.frenquency = frequency
-
-        self.led_pin = 0 # Colocar o número da porta aqui
+        self.led_pin = 0
 
         GPIO.setup(self.led_pin, GPIO.OUT)
-        self.pwm = GPIO.PWM(led_pin, 100)
+        self.pwm = GPIO.PWM(self.led_pin, 100)
         self.pwm.start(0)
 
 
