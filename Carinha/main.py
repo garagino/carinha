@@ -7,7 +7,9 @@ This is a project by GARAGino, Research Group on Physical Computing at CESAR Sch
 
 from emotional_rating.weather_api import weather_api
 from emotional_rating.emotion import emotions
+from breathing import breathe
 
 
 weather_api.start()
+breathe.start()
 print(emotions.get_current_emotion())

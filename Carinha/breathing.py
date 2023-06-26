@@ -24,6 +24,3 @@ class Breathing(Thread):
 
 
 breathe = Breathing(0, 0.5)
-
-while True:
-    breathe.run()
