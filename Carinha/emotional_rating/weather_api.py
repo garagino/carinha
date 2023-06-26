@@ -1,10 +1,15 @@
+from time import sleep
 from datetime import date
+from threading import Thread
 import requests
 from utils import json_write
 from utils import week_day_list
 
 
-class WeatherApi():
+class WeatherApi(Thread):
+
+    def __init__(self):
+        Thread.__init__(self)
 
     def get_weather(self):
         """Queries the weather API and saves relevant data to a JSON file"""
@@ -37,5 +42,10 @@ class WeatherApi():
         }
 
         json_write('Carinha/emotional_rating/current_data.json', file_content)
+
+    def run(self):
+        while True:
+            self.get_weather()
+            sleep(2760) # 46 minutes
 
 weather_api = WeatherApi()

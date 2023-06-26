@@ -10,7 +10,7 @@ from emotional_rating.emotion import emotions
 from utils import millis
 
 tempoAnterior = millis()
-weather_api.get_weather()
+weather_api.start()
 print(emotions.get_current_emotion())
 
 try:
