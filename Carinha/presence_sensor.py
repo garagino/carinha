@@ -6,7 +6,7 @@ class PresenceSensor(Thread):
     def __init__(self, pir_sensor):
         Thread.__init__(self)
         self.pir_sensor = pir_sensor
-        self.presence = 0
+        self.presence = False
 
         GPIO.setup(self.pir_sensor, GPIO.IN)
 
@@ -20,7 +20,7 @@ class PresenceSensor(Thread):
                 timer = 0
             
             if timer >= 3:
-                self.presence += 1
+                self.presence = True
 
     def run(self):
         self.sense()
