@@ -10,7 +10,10 @@ class Breathing(Thread):
         self.led_pin = led_pin
         self.sequence = list(range(0, 100)) + list(range(100, 0, -1))
 
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.cleanup()
         GPIO.setup(self.led_pin, GPIO.OUT)
+
         self.pwm = GPIO.PWM(self.led_pin, 100)
         self.pwm.start(0)
 
@@ -20,7 +23,8 @@ class Breathing(Thread):
             sleep(self.frenquency)
 
     def run(self):
-        self.breathe()
+        while True:
+            self.breathe()
 
 
-breathe = Breathing(0, 0.5)
+breathe = Breathing(8, 0.02)
