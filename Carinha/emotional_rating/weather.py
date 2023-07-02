@@ -32,7 +32,7 @@ class Weather():
     def __create_weathers(self, lang):
         weather_units = []
 
-        with open(r'Carinha\emotional_rating\weather_map.csv', encoding='UTF-8') as weather_file:
+        with open('Carinha/emotional_rating/weather_map.csv', encoding='UTF-8') as weather_file:
             weather_reader = csv.DictReader(weather_file)
 
             text_day = 'lang text day'.replace('lang', lang)
