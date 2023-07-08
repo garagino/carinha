@@ -1,9 +1,16 @@
+"""Breathing effect by lighting
+
+The lighting breathing effect aims to bring life and dynamism to the device,
+even when there is no one nearby interacting with it.
+"""
+
 from threading import Thread
 from time import sleep
 import RPi.GPIO as GPIO
 
 
 class Breathing(Thread):
+    """Thread that controls breathing"""
     def __init__(self, led_pin, frequency):
         Thread.__init__(self)
         self.frenquency = frequency
@@ -18,6 +25,7 @@ class Breathing(Thread):
         self.pwm.start(0)
 
     def breathe(self):
+        """Executes the pulsation"""
         for intensity in self.sequence:
             self.pwm.ChangeDutyCycle(intensity)
             sleep(self.frenquency)
