@@ -4,6 +4,7 @@ from threading import Thread
 import requests
 from utils import json_write
 from utils import week_day_list
+from decouple import config
 
 
 class WeatherApi(Thread):
@@ -14,7 +15,7 @@ class WeatherApi(Thread):
     def get_weather(self):
         """Queries the weather API and saves relevant data to a JSON file"""
 
-        token = '5pU_kiVDbnaTRqp8feiC0GktoGJ5iOwV0-cPYZ-KZhs'
+        token = config('TOKEN')
         coord = '-8.059641978650072,-34.87248963042983' #CESAR School from Recife
         unit = 'metric' #metric = celcius/km
         details = 'true'
