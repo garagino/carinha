@@ -42,7 +42,7 @@ class WeatherApi(Thread):
             'windSpeed': response['wind']['speed']['value']
         }
 
-        json_write('Carinha/emotional_rating/current_data.json', file_content)
+        json_write('Carinha/emotional_rating/emotions/current_data.json', file_content)
 
     def run(self):
         while True:

@@ -58,7 +58,7 @@ class Emotions():
 
         emotions_list = []
         path_emotions = 'Carinha/emotional_rating/emotions'
-        for file_emotion in listdir(path_emotions):
+        for file_emotion in [file for file in listdir(path_emotions) if file != 'current_data.json']:
             dict_file = json_read(f'{path_emotions}/{file_emotion}')
 
             name = dict_file['name']
