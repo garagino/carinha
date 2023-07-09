@@ -2,7 +2,7 @@ from time import sleep
 from datetime import date
 from threading import Thread
 import requests
-from utils import json_write, week_day_list as wdl
+from utils import json_write, week_day_list as wdl, EMOTIONS_DIR, CURRENT_DATA_FILE
 from decouple import config
 
 
@@ -41,7 +41,7 @@ class WeatherApi(Thread):
             'windSpeed': response['wind']['speed']['value']
         }
 
-        json_write('Carinha/emotional_rating/emotions/current_data.json', file_content)
+        json_write(EMOTIONS_DIR + CURRENT_DATA_FILE, file_content)
 
     def run(self):
         while True:

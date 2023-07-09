@@ -2,7 +2,7 @@
 
 from os import listdir
 from emotional_rating.weather import weather
-from utils import json_read, week_day_list as wdl
+from utils import json_read, week_day_list as wdl, EMOTIONS_DIR, CURRENT_DATA_FILE
 
 
 class Emotions():
@@ -57,9 +57,8 @@ class Emotions():
         """Generates a list of emotions from reference files"""
 
         emotions_list = []
-        path_emotions = 'Carinha/emotional_rating/emotions'
-        for file_emotion in [file for file in listdir(path_emotions) if file != 'current_data.json']:
-            dict_file = json_read(f'{path_emotions}/{file_emotion}')
+        for file_emotion in [file for file in listdir(EMOTIONS_DIR) if file != CURRENT_DATA_FILE]:
+            dict_file = json_read(EMOTIONS_DIR + file_emotion)
 
             name = dict_file['name']
             weather_unit = weather[dict_file['iconCode']]
@@ -73,7 +72,7 @@ class Emotions():
     def __get_current_data(self):
         """Return a current emotion data from a JSON weather file"""
 
-        weather_data = json_read('Carinha/emotional_rating/current_data.json')
+        weather_data = json_read(EMOTIONS_DIR + CURRENT_DATA_FILE)
 
         weather_unit = weather[weather_data['iconCode']]
         temperature = weather_data['temperature']

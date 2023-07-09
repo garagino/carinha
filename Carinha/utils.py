@@ -5,6 +5,9 @@ import json
 from time import time
 
 
+EMOTIONS_DIR = 'Carinha/emotional_rating/emotions/'
+CURRENT_DATA_FILE = 'current_data.json'
+
 week_day_list = ['Monday',
                  'Tuesday',
                  'Wednesday',
