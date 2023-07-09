@@ -2,8 +2,7 @@ from time import sleep
 from datetime import date
 from threading import Thread
 import requests
-from utils import json_write
-from utils import week_day_list
+from utils import json_write, week_day_list as wdl
 from decouple import config
 
 
@@ -34,7 +33,7 @@ class WeatherApi(Thread):
 
         file_content = {
             'dateTime': response['dateTime'],
-            'weekDay': week_day_list[date.weekday(date.today())],
+            'weekDay': wdl[date.weekday(date.today())],
             'weather': response['phrase'],
             'iconCode': response['iconCode'],
             'isDayTime': response['isDayTime'],
