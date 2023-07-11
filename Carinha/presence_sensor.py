@@ -1,6 +1,10 @@
 from datetime import datetime
 from threading import Thread
+from os.path import exists
+from csv import writer
 from gpiozero import MotionSensor
+
+from utils import LOG_TIME_FILE
 
 class PresenceSensor(Thread):
     def __init__(self, pir_sensor):
@@ -20,8 +24,14 @@ class PresenceSensor(Thread):
             self.__log_time(initial_time, delta_time)
 
     def __log_time(self, initial_interaction, duration):
-        #TODO: Save initial interacion time and duration in csv file
-        pass
+        if not exists(LOG_TIME_FILE):
+            with open(LOG_TIME_FILE, 'w', encoding='UTF-8') as file:
+                log_file = writer(file)
+                log_file.writerow(['initial_interaction', 'duration'])
+
+        with open(LOG_TIME_FILE, 'a', encoding='UTF-8') as file:
+            log_file = writer(file)
+            log_file.writerow([initial_interaction, duration])
 
     def run(self):
         self.sense()

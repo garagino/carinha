@@ -5,6 +5,8 @@ import json
 from time import time
 
 
+LOG_TIME_FILE = 'log_time_file.csv'
+
 week_day_list = ['Monday',
                  'Tuesday',
                  'Wednesday',
