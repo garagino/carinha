@@ -7,6 +7,7 @@ from time import time
 
 EMOTIONS_DIR = 'Carinha/emotional_rating/emotions/'
 CURRENT_DATA_FILE = 'current_data.json'
+LOG_TIME_FILE = 'log_time_file.csv'
 
 week_day_list = ['Monday',
                  'Tuesday',
