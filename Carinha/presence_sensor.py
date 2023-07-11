@@ -35,3 +35,6 @@ class PresenceSensor(Thread):
 
     def run(self):
         self.sense()
+
+
+presence_sensor = PresenceSensor(4)
