@@ -1,12 +1,12 @@
-from time import sleep
-from datetime import date
 from threading import Thread
-import requests
-from utils import json_write, week_day_list as wdl, EMOTIONS_DIR, CURRENT_DATA_FILE
 from decouple import config
+from datetime import date
+from time import sleep
+import requests
+import utils
 
 
-class WeatherApi(Thread):
+class WeatherAPI(Thread):
 
     def __init__(self):
         Thread.__init__(self)
@@ -33,7 +33,7 @@ class WeatherApi(Thread):
 
         file_content = {
             'dateTime': response['dateTime'],
-            'weekDay': wdl[date.weekday(date.today())],
+            'weekDay': utils.week_day_list[date.weekday(date.today())],
             'weather': response['phrase'],
             'iconCode': response['iconCode'],
             'isDayTime': response['isDayTime'],
@@ -41,11 +41,9 @@ class WeatherApi(Thread):
             'windSpeed': response['wind']['speed']['value']
         }
 
-        json_write(EMOTIONS_DIR + CURRENT_DATA_FILE, file_content)
+        utils.json_write(utils.WEATHER_DIR + utils.CURRENT_DATA_FILE, file_content)
 
     def run(self):
         while True:
             self.get_weather()
             sleep(2760) # 46 minutes
-
-weather_api = WeatherApi()

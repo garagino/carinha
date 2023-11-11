@@ -1,15 +1,20 @@
-"""Representation of an emotion"""
+"""
+
+    Representation of an emotion
+
+"""
 
 from os import listdir
-from emotional_rating.weather import weather
-from utils import json_read, week_day_list as wdl, EMOTIONS_DIR, CURRENT_DATA_FILE
+import weather
+import utils
 
 
-class Emotions():
-    """List of Emotions
+class EmotionalRating():
+    """
+        List of Emotions
 
-    Instantiate a list of emotions from reference files.
-    Generates a reference to current emotions and defines which emotion is being felt now.
+        Instantiate a list of emotions from reference files.
+        Generates a reference to current emotions and defines which emotion is being felt now.
     """
 
     class Emotion():
@@ -38,47 +43,39 @@ class Emotions():
                 The lower the returned value, the more similar the emotions are.
             """
 
-            score = 0
+            self_emotion_index = utils.wdl.index(self.week_day)
+            other_emotion_index = utils.wdl.index(other.week_day)
+            week_day_distance_a = abs(self_emotion_index - other_emotion_index)
+            week_day_distance_b = abs((len(utils.wdl) - self_emotion_index) - other_emotion_index)
 
+            score = 0
             score += self.weather_unit - other.weather_unit
             score += abs(self.temperature - other.temperature)
-
-            week_day_dist_a = abs(wdl.index(self.week_day) - wdl.index(other.week_day))
-            week_day_dist_b = abs((len(wdl) - wdl.index(self.week_day)) - wdl.index(other.week_day))
-
-            score += min(week_day_dist_a, week_day_dist_b)
+            score += min(week_day_distance_a, week_day_distance_b)
 
             return score
-
+        
     def __init__(self):
         self.emotions = self.__generate_emotions()
+        self.weather = weather.Weather('pt')
 
     def __generate_emotions(self):
         """Generates a list of emotions from reference files"""
 
+        reference_files = listdir(utils.EMOTIONS_DIR)
+        
         emotions_list = []
-        for file_emotion in [file for file in listdir(EMOTIONS_DIR) if file != CURRENT_DATA_FILE]:
-            dict_file = json_read(EMOTIONS_DIR + file_emotion)
+        for file_emotion in reference_files:
+            file_dictonary = utils.json_read(utils.EMOTIONS_DIR + file_emotion)
 
-            name = dict_file['name']
-            weather_unit = weather[dict_file['iconCode']]
-            temperature = dict_file['temperature']
-            week_day = dict_file['weekDay']
+            name = file_dictonary['name']
+            weather_unit = self.weather[file_dictonary['iconCode']]
+            temperature = file_dictonary['temperature']
+            week_day = file_dictonary['weekDay']
 
             emotions_list.append(self.Emotion(name, weather_unit, temperature, week_day))
 
         return emotions_list
-
-    def __get_current_data(self):
-        """Return a current emotion data from a JSON weather file"""
-
-        weather_data = json_read(EMOTIONS_DIR + CURRENT_DATA_FILE)
-
-        weather_unit = weather[weather_data['iconCode']]
-        temperature = weather_data['temperature']
-        week_day = weather_data['weekDay']
-
-        return self.Emotion('current', weather_unit, temperature, week_day)
 
     def get_current_emotion(self):
         """Returns the current emotion
@@ -98,6 +95,14 @@ class Emotions():
             emotions_score[emotion] = current_data.compare(emotion)
 
         return min(emotions_score, key=emotions_score.get)
+    
+    def __get_current_data(self):
+        """Return a current emotion data from a JSON weather file"""
 
+        weather_data = utils.json_read(utils.WEATHER_DIR + utils.CURRENT_DATA_FILE)
 
-emotions = Emotions()
+        weather_unit = self.weather[weather_data['iconCode']]
+        temperature = weather_data['temperature']
+        week_day = weather_data['weekDay']
+
+        return self.Emotion('current', weather_unit, temperature, week_day)

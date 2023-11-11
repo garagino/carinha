@@ -1,8 +1,8 @@
+from gpiozero import MotionSensor
 from datetime import datetime
 from threading import Thread
 from os.path import exists
 from csv import writer
-from gpiozero import MotionSensor
 
 from utils import LOG_TIME_FILE
 
@@ -35,6 +35,3 @@ class PresenceSensor(Thread):
 
     def run(self):
         self.sense()
-
-
-presence_sensor = PresenceSensor(4)

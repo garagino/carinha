@@ -1,12 +1,13 @@
-"""Breathing effect by lighting
+"""
+    Breathing effect by lighting
 
-The lighting breathing effect aims to bring life and dynamism to the device,
-even when there is no one nearby interacting with it.
+    The lighting breathing effect aims to bring life and dynamism to the device,
+    even when there is no one nearby interacting with it.
 """
 
 from threading import Thread
-from time import sleep
 from gpiozero import PWMLED
+from time import sleep
 
 
 class Breathing(Thread):
@@ -28,5 +29,3 @@ class Breathing(Thread):
         while True:
             self.breathe()
 
-
-breathe = Breathing(8, 0.02)
