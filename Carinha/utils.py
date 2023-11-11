@@ -5,17 +5,20 @@ import json
 from time import time
 
 
-EMOTIONS_DIR = 'Carinha/emotional_rating/emotions/'
+EMOTIONS_DIR = 'Carinha/emotional/emotions/'
+WEATHER_DIR = 'Carinha/emotional/weather/'
 CURRENT_DATA_FILE = 'current_data.json'
 LOG_TIME_FILE = 'log_time_file.csv'
 
-week_day_list = ['Monday',
-                 'Tuesday',
-                 'Wednesday',
-                 'Thursday',
-                 'Friday',
-                 'Saturday',
-                 'Sunday']
+week_day_list = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday'
+]
 
 def millis():
     """Returns the current time in milliseconds"""

@@ -23,29 +23,26 @@ class Weather():
         self.weathers = self.__create_weathers(lang)
 
     def __getitem__(self, key):
-        for weather_unity in self.weathers:
-            if key in weather_unity.icon_numbers:
-                return weather_unity
+        for weather_unit in self.weathers:
+            if key in weather_unit.icon_numbers:
+                return weather_unit
 
         raise IndexError('climate index out of range')
 
     def __create_weathers(self, lang):
         weather_units = []
 
-        with open('Carinha/emotional_rating/weather_map.csv', encoding='UTF-8') as weather_file:
+        with open('Carinha/weather/weather_map.csv', encoding='UTF-8') as weather_file:
             weather_reader = csv.DictReader(weather_file)
 
             text_day = 'lang text day'.replace('lang', lang)
 
-            for index, weather_unity in enumerate(weather_reader):
-                icons = [int(weather_unity['icon number day'])]
-                if weather_unity['icon number night'] != '':
-                    icons.append(int(weather_unity['icon number night']))
+            for index, weather_unit in enumerate(weather_reader):
+                icons = [int(weather_unit['icon number day'])]
+                if weather_unit['icon number night'] != '':
+                    icons.append(int(weather_unit['icon number night']))
 
-                weather_unit = self.WeatherUnit(index, weather_unity[text_day], *icons)
+                weather_unit = self.WeatherUnit(index, weather_unit[text_day], *icons)
                 weather_units.append(weather_unit)
 
         return weather_units
-
-
-weather = Weather('pt')
