@@ -7,9 +7,9 @@
 """
 
 from emotional import EmotionalRating
+from sensors import PresenceSensor
 from breathing import Breathing
 from weather import WeatherAPI
-from sensor import PresenceSensor
 
 
 def main():
